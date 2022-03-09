@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%load static%}
+{% load sass_tags %}
+
+{%block main%}
+    <div class="title">Рыбы</div>
+    <div class="items">
+        {%for item in data%}
+            <a class="item" href="{%url 'main:item_description' item.id%}">
+                <div class="photo" style="background-image: url({{item.image.url}});">                                        
+                    {%if item.discount > 0%}
+                        <div class="discount">-{{item.discount}}%</div>
+                        <div class="name">Скидка</div>
+                    {%endif%}
+                </div>
+                {%if item.discount > 0%}
+                    <div class="title red">{{item.discount_price}} ₽</div>
+                    <div class="title old">{{item.price}} ₽</div>
+                {%else%}
+                    <div class="title">{{item.price}} ₽</div>
+                {%endif%}                
+                <div class="title">{{item.name}}</div>
+                <div class="content">{{item.description}}</div>
+            </a>
+        {%endfor%}        
+        {%if add_block%}
+            <div class="item"></div>
+        {%endif%}
+    </div>
+{%endblock%}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{%load static%}
+{% load sass_tags %}
+
+{%block styles%}
+    <link rel="stylesheet" href="{% sass_src 'css/item.scss'%}">
+{%endblock%}
+
+{%block main%}
+    {%if not item%}
+        <div class="not-found">Рыба не найдена!</div>
+    {%else%}
+        <div class="title">{{item.name}}</div>
+        <div class="item-block">
+            <div class="photo" style="background-image: url({{item.image.url}});"></div>
+            <div class="info-block">
+                <div class="attribute-block">
+                    <div class="title">Описание</div>
+                    
+                    <div class="item">
+                        <div class="name">
+                            <span>Вид</span>
+                        </div>
+                        <div class="value">Тигровая акула</div>
+                    </div>
+                    
+                    <div class="item">
+                        <div class="name">
+                            <span>Длинна</span>
+                        </div>
+                        <div class="value">340см</div>
+                    </div>
+                    
+                    <div class="item">
+                        <div class="name">
+                            <span>Вес</span>
+                        </div>
+                        <div class="value">140кг</div>
+                    </div>
+                    
+                    <div class="item">
+                        <div class="name">
+                            <span>Цвет</span>
+                        </div>
+                        <div class="value">Красный</div>
+                    </div>
+                    
+                </div>
+                <div class="attribute-block">
+                    {%if item.discount > 0%}
+                        <div class="price red">{{item.discount_price}} ₽</div>
+                        <div class="price old">{{item.price}} ₽</div>
+                    {%else%}
+                        <div class="price">{{item.price}} ₽</div>
+                    {%endif%}
+                    {%if cart_item.quantity > 0 %}
+                        <div class="buy-block">
+                            <a href="#" class="go-to-cart">
+                                <div>Перейти в корзину</div>                                    
+                            </a>
+                            <div class="control-panel">
+                                <div class="minus"></div>
+                                <div class="count">1</div>
+                                <div class="add"></div>
+                            </div>
+                        </div>
+                    {%else%}
+                        <div class="buy">Добавить в корзину</div>
+                    {%endif%}
+                </div>
+            </div>            
+        </div>
+    {%endif%}
+    
+    
+{%endblock%}
