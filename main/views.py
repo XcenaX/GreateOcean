@@ -1,5 +1,3 @@
-from msilib import add_tables
-from attr import has
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse, JsonResponse, Http404

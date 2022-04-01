@@ -33,7 +33,7 @@ body {
 a, a:hover {
   outline: none;
   border: none;
-  text-decoration: none; }
+  text-decoration: none !important; }
 
 .wrapper {
   display: flex;
@@ -66,6 +66,19 @@ a, a:hover {
     color: white;
     font-size: 20px;
     font-weight: bold; }
+  .header .right-side {
+    display: flex;
+    align-items: center; }
+    .header .right-side > .info, .header .right-side .info:focus {
+      width: 30px;
+      height: 30px;
+      background-image: url(../images/info.png);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: inherit;
+      border: none !important;
+      outline: none !important; }
   .header .download, .header .header .download:hover {
     text-decoration: none;
     border: none;
@@ -109,24 +122,23 @@ a, a:hover {
     font-size: 30px;
     font-weight: 600;
     padding: 30px 0px; }
-  .main .items {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center; }
-    .main .items .item {
-      width: 30%;
+  .main .items .wrapper {
+    max-width: 100%;
+    padding: 0 2%;
+    background: inherit;
+    border: none; }
+    .main .items .wrapper .item {
       background-color: #03045e;
       color: white;
       margin-bottom: 40px; }
-      .main .items .item .photo {
+      .main .items .wrapper .item .photo {
         width: 100%;
         padding-bottom: 100%;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
         position: relative; }
-        .main .items .item .photo .name {
+        .main .items .wrapper .item .photo .name {
           background-color: #7d36aa;
           color: white;
           font-size: 15px;
@@ -137,9 +149,9 @@ a, a:hover {
           top: 5%;
           font-weight: bold;
           border-radius: 15px; }
-        .main .items .item .photo .name.red {
+        .main .items .wrapper .item .photo .name.red {
           color: red; }
-        .main .items .item .photo .discount {
+        .main .items .wrapper .item .photo .discount {
           color: white;
           background: red;
           position: absolute;
@@ -151,19 +163,19 @@ a, a:hover {
           font-weight: bold;
           border-radius: 15px;
           line-height: 16px; }
-      .main .items .item .title {
+      .main .items .wrapper .item .title {
         max-width: 100%;
         margin: 15px 0 0 5%;
         font-size: 18px;
         font-weight: 600;
         position: relative; }
-      .main .items .item .title.red {
+      .main .items .wrapper .item .title.red {
         color: red;
         display: inline-block; }
-      .main .items .item .title.old {
+      .main .items .wrapper .item .title.old {
         display: inline-block;
         font-size: 14px; }
-      .main .items .item .title.old:before {
+      .main .items .wrapper .item .title.old:before {
         background: #f91155;
         content: "";
         display: block;
@@ -172,7 +184,7 @@ a, a:hover {
         top: 50%;
         transform: rotate(-12deg);
         width: 100%; }
-      .main .items .item .content {
+      .main .items .wrapper .item .content {
         max-width: 100%;
         padding: 15px 5% 0;
         padding-bottom: 20px;

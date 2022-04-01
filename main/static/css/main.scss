@@ -41,7 +41,7 @@ body{
 a, a:hover{
     outline: none;
     border: none;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .wrapper {
@@ -82,7 +82,21 @@ a, a:hover{
         font-size: 20px;
         font-weight: bold;
     }
-
+    .right-side{
+        display: flex;
+        align-items: center;
+        >.info, .info:focus{
+            width: 30px;
+            height: 30px;
+            background-image: url(../images/info.png);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: inherit;
+            border: none !important;
+            outline: none !important;
+        }
+    }
     .download, .header .download:hover{    
         text-decoration: none;
         border: none;
@@ -90,6 +104,9 @@ a, a:hover{
         color: black;
         text-align: center;
         position: relative;
+
+
+        
 
         >.cart-block{
             padding: 10px 40px;
@@ -141,98 +158,104 @@ a, a:hover{
     }
 
     .items{
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        align-items: center;
-
-        .item{
-            width: 30%;
-            background-color: #03045e;
-            color: white;
-            margin-bottom: 40px;
-
-            .photo{
-                width: 100%;
-                padding-bottom: 100%;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                position: relative;
-                
-                .name{
-                    background-color: rgb(125, 54, 170);                    
-                    color: white;
-                    font-size: 15px;
-                    padding: 5px 20px;                    
-                    text-align: center;
-                    position: absolute;
-                    left: 5%;
-                    top: 5%;
-                    font-weight: bold;
-                    border-radius: 15px;
+        // display: flex;
+        // justify-content: space-between;
+        // flex-wrap: wrap;
+        // align-items: center;
+        .wrapper{
+            max-width: 100%;
+            padding: 0 2%;
+            background: inherit;
+            border: none;
+            .item{
+                // width: 30%;
+                background-color: #03045e;
+                color: white;
+                margin-bottom: 40px;
+    
+                .photo{
+                    width: 100%;
+                    padding-bottom: 100%;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    position: relative;
+                    
+                    .name{
+                        background-color: rgb(125, 54, 170);                    
+                        color: white;
+                        font-size: 15px;
+                        padding: 5px 20px;                    
+                        text-align: center;
+                        position: absolute;
+                        left: 5%;
+                        top: 5%;
+                        font-weight: bold;
+                        border-radius: 15px;
+                    }
+    
+                    .name.red{
+                        color: red;
+                    }
+    
+                    .discount{
+                        color: white;
+                        background: red;
+                        position: absolute;
+                        left: 5%;
+                        bottom: 5%;
+                        padding: 5px 10px;                    
+                        text-align: center;
+                        font-size: 15px;
+                        font-weight: bold;
+                        border-radius: 15px;
+                        line-height: 16px;
+                    }
                 }
-
-                .name.red{
+    
+                .title{
+                    max-width: 100%;
+                    margin: 15px 0 0 5%;
+                    font-size: 18px;
+                    font-weight: 600;
+                    position: relative;
+                }
+    
+                .title.red{
                     color: red;
+                    display: inline-block;
                 }
-
-                .discount{
-                    color: white;
-                    background: red;
+    
+                .title.old{
+                    display: inline-block;
+                    font-size: 14px;
+                }
+    
+                .title.old:before{                
+                    background: #f91155;                
+                    content: "";
+                    display: block;
+                    height: 2px;
                     position: absolute;
-                    left: 5%;
-                    bottom: 5%;
-                    padding: 5px 10px;                    
-                    text-align: center;
-                    font-size: 15px;
-                    font-weight: bold;
-                    border-radius: 15px;
-                    line-height: 16px;
+                    top: 50%;
+                    transform: rotate(-12deg);
+                    width: 100%;                
                 }
-            }
-
-            .title{
-                max-width: 100%;
-                margin: 15px 0 0 5%;
-                font-size: 18px;
-                font-weight: 600;
-                position: relative;
-            }
-
-            .title.red{
-                color: red;
-                display: inline-block;
-            }
-
-            .title.old{
-                display: inline-block;
-                font-size: 14px;
-            }
-
-            .title.old:before{                
-                background: #f91155;                
-                content: "";
-                display: block;
-                height: 2px;
-                position: absolute;
-                top: 50%;
-                transform: rotate(-12deg);
-                width: 100%;                
-            }
-
-            .content{
-                max-width: 100%;
-                padding: 15px 5% 0;
-                padding-bottom: 20px;
-                font-size: 15px;
-                text-align: justify;
-                line-height: 18px;
-                font-weight: 400;
-                height: 200px;
-                overflow-y: auto;
+    
+                .content{
+                    max-width: 100%;
+                    padding: 15px 5% 0;
+                    padding-bottom: 20px;
+                    font-size: 15px;
+                    text-align: justify;
+                    line-height: 18px;
+                    font-weight: 400;
+                    height: 200px;
+                    overflow-y: auto;
+                }
             }
         }
+        
     }
 }
 
