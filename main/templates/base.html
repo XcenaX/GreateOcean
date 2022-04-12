@@ -12,17 +12,11 @@
         <script src="{%static 'js/jquery.min.js'%}"></script>
         <link rel="stylesheet" href="{% sass_src 'css/main.scss'%}">
         <link rel="stylesheet" href="{% sass_src 'css/bootstrap/bootstrap.scss'%}">
-<<<<<<< HEAD
         <script src="{%static 'js/bootstrap/bootstrap.min.js'%}"></script>
         <script src="{%static 'js/bootstrap/bootstrap.bundle.js'%}"></script>        
         <script src="{%static 'js/main.js'%}"></script>
         <script src="{%static 'js/popper.min.js'%}"></script>
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
-=======
-        <script src="{%static 'js/bootstrap/bootstrap.min.js'%}"></script>        
-        <script src="{%static 'js/main.js'%}"></script>
-        <script src="{%static 'js/popper.min.js'%}"></script>
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
         
         {%block styles%}
         {%endblock%}
@@ -30,11 +24,7 @@
 {%endblock%}
 
 <body>
-<<<<<<< HEAD
     <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-=======
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,7 +40,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11; padding: 1vw !important;">
         <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header" style="padding: 0.5vw 0.75vw;">
@@ -63,8 +52,6 @@
             </div>
         </div>
     </div>
-=======
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
     {%block body%}
         
         <div class="wrapper">
@@ -86,14 +73,10 @@
                             {%endif%}
                         </div>
                     </a>      
-<<<<<<< HEAD
                     <button type="button" class="info" data-bs-toggle="modal" data-bs-target="#infoModal"></button>
                     <!-- onclick="SwitchClass('liveToast', 'hide'); SwitchClass('liveToast', 'show')" -->
                     <button type="button" class="btn btn-primary download" id="liveToastBtn" onclick="showMessage('liveToast')">Загрузить</button>
                     
-=======
-                    <button type="button" class="btn btn-primary info" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
                 </div>
                       
             </nav>

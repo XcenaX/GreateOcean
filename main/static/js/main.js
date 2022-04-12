@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 $( document ).ready(function() {
     // var myModal = document.getElementById('exampleModal')
     // var myInput = document.getElementById('modal_button')
@@ -70,13 +69,3 @@ function showMessage(id){
     element.classList.toggle("hide");
     element.classList.toggle("show");
 }
-=======
-// $( document ).ready(function() {
-//     var myModal = document.getElementById('exampleModal')
-//     var myInput = document.getElementById('modal_button')
-
-//     myModal.addEventListener('shown.bs.modal', function () {
-//     myInput.focus()
-//     })
-// });
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f

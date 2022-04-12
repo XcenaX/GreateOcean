@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 from contextlib import redirect_stderr
 from shutil import ExecError
-=======
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseRedirect

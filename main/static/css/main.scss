@@ -100,17 +100,11 @@ a, a:hover{
     .right-side{
         display: flex;
         align-items: center;
-<<<<<<< HEAD
         justify-content: space-between;
         width: 20%;
         >.info, .info:focus{
             width: 2vw;
             height: 2vw;
-=======
-        >.info, .info:focus{
-            width: 30px;
-            height: 30px;
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
             background-image: url(../images/info.png);
             background-size: contain;
             background-position: center;
@@ -119,7 +113,6 @@ a, a:hover{
             border: none !important;
             outline: none !important;
         }
-<<<<<<< HEAD
         >.download{
             font-size: 1vw;
             padding: 2% 4%;
@@ -127,8 +120,6 @@ a, a:hover{
             border-radius: 1vw;
             line-height: 1.5vw;
         }
-=======
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
     }
     .download, .header .download:hover{    
         text-decoration: none;
@@ -206,11 +197,7 @@ a, a:hover{
                 // width: 30%;
                 background-color: #03045e;
                 color: white;
-<<<<<<< HEAD
                 margin-bottom: 2vw;
-=======
-                margin-bottom: 40px;
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
     
                 .photo{
                     width: 100%;
@@ -223,24 +210,15 @@ a, a:hover{
                     .name{
                         background-color: rgb(125, 54, 170);                    
                         color: white;
-<<<<<<< HEAD
                         font-size: 1vw;
                         padding: 0.5vw 1.2vw;
                         line-height: 1.2vw;                 
-=======
-                        font-size: 15px;
-                        padding: 5px 20px;                    
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
                         text-align: center;
                         position: absolute;
                         left: 5%;
                         top: 5%;
                         font-weight: bold;
-<<<<<<< HEAD
                         border-radius: 0.8vw;
-=======
-                        border-radius: 15px;
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
                     }
     
                     .name.red{
@@ -253,27 +231,17 @@ a, a:hover{
                         position: absolute;
                         left: 5%;
                         bottom: 5%;
-<<<<<<< HEAD
                         padding: 0.3vw 0.5vw;                    
                         text-align: center;
                         font-size: 0.8vw;
                         font-weight: bold;
                         border-radius: 0.7vw;
                         line-height: 1vw;
-=======
-                        padding: 5px 10px;                    
-                        text-align: center;
-                        font-size: 15px;
-                        font-weight: bold;
-                        border-radius: 15px;
-                        line-height: 16px;
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
                     }
                 }
     
                 .title{
                     max-width: 100%;
-<<<<<<< HEAD
                     margin: 1vw 0 0 1vw;
                     font-size: 1vw;
                     font-weight: 600;
@@ -301,33 +269,12 @@ a, a:hover{
                 }
     
                 
-=======
-                    margin: 15px 0 0 5%;
-                    font-size: 18px;
-                    font-weight: 600;
-                    position: relative;
-                }
-    
-                .title.red{
-                    color: red;
-                    display: inline-block;
-                }
-    
-                .title.old{
-                    display: inline-block;
-                    font-size: 14px;
-                }
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
     
                 .title.old:before{                
                     background: #f91155;                
                     content: "";
                     display: block;
-<<<<<<< HEAD
                     height: 0.1vw;
-=======
-                    height: 2px;
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
                     position: absolute;
                     top: 50%;
                     transform: rotate(-12deg);
@@ -336,7 +283,6 @@ a, a:hover{
     
                 .content{
                     max-width: 100%;
-<<<<<<< HEAD
                     padding: 0.75vw 5% 0;
                     padding-bottom: 20px;
                     font-size: 0.75vw;
@@ -344,15 +290,6 @@ a, a:hover{
                     line-height: 0.9vw;
                     font-weight: 400;
                     height: 10vw;
-=======
-                    padding: 15px 5% 0;
-                    padding-bottom: 20px;
-                    font-size: 15px;
-                    text-align: justify;
-                    line-height: 18px;
-                    font-weight: 400;
-                    height: 200px;
->>>>>>> c61ef00f9701dd6b6857a4e8888640c85e0eaf5f
                     overflow-y: auto;
                 }
             }
