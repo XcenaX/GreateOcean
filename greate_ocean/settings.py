@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'storages',
+    
 ]
 
 STATICFILES_FINDERS = [

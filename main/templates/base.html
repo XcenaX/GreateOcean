@@ -1,22 +1,61 @@
 {% load static %}
 {% load sass_tags %}
 
+
+
 {%block links%}
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Greate  Ocean</title>
+        <script src="{%static 'js/jquery.min.js'%}"></script>
         <link rel="stylesheet" href="{% sass_src 'css/main.scss'%}">
+        <link rel="stylesheet" href="{% sass_src 'css/bootstrap/bootstrap.scss'%}">
+        <script src="{%static 'js/bootstrap/bootstrap.min.js'%}"></script>
+        <script src="{%static 'js/bootstrap/bootstrap.bundle.js'%}"></script>        
+        <script src="{%static 'js/main.js'%}"></script>
+        <script src="{%static 'js/popper.min.js'%}"></script>
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+        
         {%block styles%}
         {%endblock%}
     </head>
 {%endblock%}
 
 <body>
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">О сайте</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    Это сайт где можно купить рыб
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11; padding: 1vw !important;">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header" style="padding: 0.5vw 0.75vw;">
+            <img src="{%static 'images/loading.gif'%}" style="width: 1vw; margin-right: 0.5vw !important;" class="rounded me-2" alt="...">
+            <strong class="me-auto">Сообщение</strong>            
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Закрыть" style="margin-right: -0.375vw; margin-left: 0.75vw;"></button>
+            </div>
+            <div class="toast-body" style="padding: 0.75vw !important;">
+            Функционал загрузки пока не доступен!
+            </div>
+        </div>
+    </div>
     {%block body%}
+        
         <div class="wrapper">
-            <div class="header">
+            <nav class="header">
                 <a href="{%url 'main:index'%}" class="left-side">
                     
                         <div class="logo"></div>
@@ -24,17 +63,23 @@
                     
                 </a>
                 
-                <a href="#" class="download">
-                    <div class="cart-block">
-                        <div class="cart"></div>
-                        <div>Корзина</div>
-                    </div>
+                <div class="right-side">
+                    <a href="#" class="download">
+                        <div class="cart-block">
+                            <div class="cart"></div>
+                            <div>Корзина</div>
+                            {%if cart.len > -1%}
+                                <div class="count">{{cart.len}}</div>
+                            {%endif%}
+                        </div>
+                    </a>      
+                    <button type="button" class="info" data-bs-toggle="modal" data-bs-target="#infoModal"></button>
+                    <!-- onclick="SwitchClass('liveToast', 'hide'); SwitchClass('liveToast', 'show')" -->
+                    <button type="button" class="btn btn-primary download" id="liveToastBtn" onclick="showMessage('liveToast')">Загрузить</button>
                     
-                    {%if cart.len > 0%}
-                        <div class="count">{{cart.len}}</div>
-                    {%endif%}
-                </a>        
-            </div>
+                </div>
+                      
+            </nav>
             <div class="main">
                 {%block main%}
                 
