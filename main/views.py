@@ -5,11 +5,11 @@ from django.views.generic import View
 from django.http import HttpResponse, JsonResponse, Http404, HttpResponseRedirect
 from django.dispatch import receiver
 from django.db.models.signals import *
+from matplotlib import image
 
 from .modules.functions import *
 from main.models import Fish
 from cart.cart import Cart
-from .forms import *
 
 class IndexView(View):
     template_name = "index.html"
@@ -60,19 +60,34 @@ class AddItem(View):
     template_name = "item-add.html"
     def get(self, request):
         cart = Cart(request)
-        form = FishForm()
+    
         return render(request, self.template_name, {
             "cart": cart,           
-            "form": form,
+        
         })
     def post(self, request):
-        form = FishForm(request.POST, request.FILES)
-        next = request.POST.get('next', '/')
-        if(form.is_valid()):
-            form.save()
-            obj = form.instance
-            # можно потом заредиректить на созданный обьект если нужно
-            return HttpResponseRedirect(next)
+        cart = Cart(request)        
+        name = post_parameter(request, "name")
+        description = post_parameter(request, "description")
+        price = post_parameter(request, "price")
+        discount = post_parameter(request, "discount")
+        weight = post_parameter(request, "weight")
+        height = post_parameter(request, "height")
+        image = post_file(request, "image")[0]
+        
+
+        if not check_image_type(image) or not image:
+            return render(request, self.template_name, {
+                "cart": cart,           
+                "error": "Неверный тип изображения! Разрешены только: jpg, jpeg, png"
+            })
+        fish = Fish.objects.create(name=name, description=description, price=price, discount=discount, weight=weight, height=height, image=image)
+        fish.save()
+        return render(request, self.template_name, {
+            "cart": cart,           
+            "success": "Рыба успешно добавлена!"
+        })
+        
 
 
 

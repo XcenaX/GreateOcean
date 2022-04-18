@@ -3,6 +3,19 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 COUNT_FISHES_ON_PAGE=20
 from ..models import *
 
+IMAGE_TYPES = [".png", ".jpg", ".jpeg"]
+
+def check_image_type(image):
+    print(image.name, "NAME")
+    try:
+        
+        for image_type in IMAGE_TYPES:
+            if image.name.endswith(image_type):
+                return True
+    except:
+        return False
+    return False
+
 def get_paginated_blogs(request, paginator):
     page = request.GET.get('page')
     try:

@@ -61,7 +61,8 @@ a, a:hover {
   justify-content: space-between;
   align-items: center;
   background-color: #00b4d8;
-  border-bottom: 0.05vw solid grey; }
+  border-bottom: 0.05vw solid grey;
+  z-index: 10; }
   .header .left-side {
     width: 12%;
     display: flex;
@@ -218,8 +219,7 @@ a, a:hover {
         width: 100%; }
       .main .items .wrapper .item .content {
         max-width: 100%;
-        padding: 0.75vw 5% 0;
-        padding-bottom: 20px;
+        padding: 0.75vw 1vw 0;
         font-size: 0.75vw;
         text-align: justify;
         line-height: 0.9vw;
@@ -236,7 +236,8 @@ a, a:hover {
   align-items: center;
   background-color: #00b4d8;
   border-top: 0.01vw solid grey;
-  flex: 0 0 auto; }
+  flex: 0 0 auto;
+  z-index: 10; }
   .footer .text {
     color: white;
     font-size: 1vw;

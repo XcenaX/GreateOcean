@@ -4,7 +4,6 @@ from greate_ocean.yandex_s3_storage import ClientDocsStorage
 class Fish(models.Model):
     name = models.TextField(default='')
     description = models.TextField(default='')
-    type = models.TextField(default='')
     price = models.IntegerField(default=0)
     discount = models.IntegerField(default=0) # скидка в процентах
     height = models.IntegerField(default=0)
