@@ -75,7 +75,10 @@
                     </a>      
                     <button type="button" class="info" data-bs-toggle="modal" data-bs-target="#infoModal"></button>
                     <!-- onclick="SwitchClass('liveToast', 'hide'); SwitchClass('liveToast', 'show')" -->
-                    <button type="button" class="btn btn-primary download" id="liveToastBtn" onclick="showMessage('liveToast')">Загрузить</button>
+                    <a href="{%url 'main:item_add'%}" class="btn btn-primary download">
+                        Добавить
+                    </a>
+                    
                     
                 </div>
                       

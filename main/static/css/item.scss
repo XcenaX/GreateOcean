@@ -142,6 +142,45 @@
             .buy:hover{
                 background-color: #003ead;
             }
+
+            .buttons{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: center;
+
+                .edit{
+                    width: 50%;
+                    height: 3vw;
+                    background-color: green;
+                    color: white;
+                    font-size: 1.5vw;
+                    line-height: 2.8vw;
+                    border-radius: 1vw 0 0 1vw;                    
+                }
+                .delete{
+                    width: 50%;
+                    height: 3vw;
+                    background-color: red;
+                    color: white;
+                    font-size: 1.5vw;
+                    line-height: 2vw;
+                    border: none;
+                    outline: none;
+                    margin: 0 !important;
+                    border-radius: 0 1vw 1vw 0;
+
+                    input{
+                        background: inherit;
+                        border: none;
+                        outline: none;
+                        height: 100%;
+                        color: white;
+                        width: 100%;
+                        border-radius: 0 1vw 1vw 0;
+                    }
+                }
+            }
         }
 
         .price{

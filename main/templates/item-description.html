@@ -68,6 +68,21 @@
                         <div class="buy">Добавить в корзину</div>
                     {%endif%}
                 </div>
+                
+                {%if has_permission%}
+                    <div class="attribute-block">
+                        <div class="buttons">
+                            <a class="edit" href="{%url 'main:item_edit' item.id%}">
+                                <div >Редактировать</div>
+                            </a>
+                            
+                            <form class="delete" action="{%url 'main:item_delete' item.id%}" method="post">{%csrf_token%}
+                                <input type="submit"  value="Удалить">
+                            </form>
+                            
+                        </div>
+                    </div>
+                {%endif%}
             </div>            
         </div>
     {%endif%}

@@ -77,7 +77,7 @@ def session_parameter(request, name):
 def get_current_user(request):
     if not request.session.get("user", None):
         return None
-    user = AdminUser.objects.filter(id=int(request.session["user"])).first()
+    user = User.objects.get(id=int(request.session["user"]))
     return user
 
 class make_incrementor(object):

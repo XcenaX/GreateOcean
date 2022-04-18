@@ -9,9 +9,19 @@ class Fish(models.Model):
     height = models.IntegerField(default=0)
     weight  = models.IntegerField(default=0)
     image = models.FileField(storage=ClientDocsStorage())
+    deleted = models.BooleanField(default=False)
     def __str__(self):
         return self.name
 
     @property
     def discount_price(self):
         return int(self.price * (self.discount/100))
+
+
+class User(models.Model):
+    login = models.TextField(default="")
+    password = models.TextField(default="")
+    fishes = models.ManyToManyField(Fish, null=True, blank=True)
+    role = models.TextField(default="user")
+    def __str__(self):
+        return self.login

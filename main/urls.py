@@ -9,5 +9,8 @@ urlpatterns = [
     path("fish/<slug:id>", views.ItemView.as_view(), name="item_description"),
     path("delete/fish/<slug:id>", views.DeleteItem.as_view(), name="item_delete"),
     path("add/fish", views.AddItem.as_view(), name="item_add"),
+    path("edit/fish/<slug:id>", views.EditView.as_view(), name="item_edit"),
+    path('login', views.LoginView.as_view(), name='login'),
+    path('register', views.RegisterView.as_view(), name='register'),
 ]
 #

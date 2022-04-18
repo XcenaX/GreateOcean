@@ -107,6 +107,38 @@
         cursor: pointer; }
       .item-block .info-block .attribute-block .buy:hover {
         background-color: #003ead; }
+      .item-block .info-block .attribute-block .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center; }
+        .item-block .info-block .attribute-block .buttons .edit {
+          width: 50%;
+          height: 3vw;
+          background-color: green;
+          color: white;
+          font-size: 1.5vw;
+          line-height: 2.8vw;
+          border-radius: 1vw 0 0 1vw; }
+        .item-block .info-block .attribute-block .buttons .delete {
+          width: 50%;
+          height: 3vw;
+          background-color: red;
+          color: white;
+          font-size: 1.5vw;
+          line-height: 2vw;
+          border: none;
+          outline: none;
+          margin: 0 !important;
+          border-radius: 0 1vw 1vw 0; }
+          .item-block .info-block .attribute-block .buttons .delete input {
+            background: inherit;
+            border: none;
+            outline: none;
+            height: 100%;
+            color: white;
+            width: 100%;
+            border-radius: 0 1vw 1vw 0; }
     .item-block .info-block .price {
       font-size: 23px;
       font-weight: 500;
