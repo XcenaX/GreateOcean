@@ -8,9 +8,11 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'), 
     path("fish/<slug:id>", views.ItemView.as_view(), name="item_description"),
     path("delete/fish/<slug:id>", views.DeleteItem.as_view(), name="item_delete"),
+    path("recover/fish/<slug:id>", views.RecoverItem.as_view(), name="item_recover"),
     path("add/fish", views.AddItem.as_view(), name="item_add"),
     path("edit/fish/<slug:id>", views.EditView.as_view(), name="item_edit"),
     path('login', views.LoginView.as_view(), name='login'),
+    path('logout', views.LogoutView.as_view(), name='logout'),
     path('register', views.RegisterView.as_view(), name='register'),
 ]
 #

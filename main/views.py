@@ -63,10 +63,15 @@ class LogoutView(View):
 
 class IndexView(View):
     template_name = "index.html"
-    def get(self, request, *args, **kwargs):             
-        data = Fish.objects.filter(deleted=False)        
-        cart = Cart(request)
+    def get(self, request, *args, **kwargs):        
         current_user = get_current_user(request)
+        data = None     
+        if current_user.role == "admin":
+            data = Fish.objects.all()        
+        else:
+            data = Fish.objects.filter(deleted=False)        
+        cart = Cart(request)
+        
         
         return render(request, self.template_name, {
             "data": data,
@@ -83,6 +88,7 @@ class ItemView(View):
         fish = None        
         cart_item = None
         current_user = get_current_user(request)
+        
         try:
             fish = Fish.objects.get(id=id)                     
             cart_item = cart.get_item(fish.id)
@@ -94,15 +100,13 @@ class ItemView(View):
 
         has_permission = False
         
-        if current_user:
-            if current_user.role == "admin":
+        if current_user:            
+            try:
+                current_user.fishes.all().get(id=id)
                 has_permission = True
-            else:
-                try:
-                    current_user.fishes.all().get(id=id)
-                    has_permission = True
-                except:
-                    pass
+            except:
+                pass
+        
         
         return render(request, self.template_name, {
             "item": fish,
@@ -133,8 +137,30 @@ class DeleteItem(View):
                 fish.deleted = True
                 fish.save()
             elif current_user.role == "admin":
-                fish.delete()
+                if fish.deleted:
+                    fish.delete()
+                else:
+                    fish.deleted = True
+                    fish.save()
+
             
+            return redirect(reverse("main:index"))
+        except Exception as e:
+            return JsonResponse({"error": e})
+
+class RecoverItem(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if current_user:
+            if current_user.role != "admin":                
+                return redirect(reverse("main:index"))
+
+        try:
+            fish = Fish.objects.get(id=id)            
+            fish.deleted = False
+            fish.save()            
             return redirect(reverse("main:index"))
         except Exception as e:
             return JsonResponse({"error": e})

@@ -95,12 +95,20 @@ a, a:hover {
       background-color: inherit;
       border: none !important;
       outline: none !important; }
-    .header .right-side > .download {
+    .header .right-side > .download, .header .right-side > .exit {
       font-size: 1vw;
       padding: 2% 4%;
       color: white;
-      border-radius: 1vw;
+      border-radius: 0.8vw;
       line-height: 1.5vw; }
+    .header .right-side > .exit {
+      background-color: red;
+      margin: 0 !important; }
+      .header .right-side > .exit input {
+        background: inherit;
+        border: none;
+        outline: none;
+        color: white; }
   .header .download, .header .header .download:hover {
     text-decoration: none;
     border: none;
@@ -109,7 +117,7 @@ a, a:hover {
     text-align: center;
     position: relative; }
     .header .download > .cart-block, .header .header .download:hover > .cart-block {
-      color: white;
+      color: white !important;
       font-weight: bold;
       border-radius: 12px;
       font-size: 1vw; }
@@ -187,6 +195,17 @@ a, a:hover {
           font-weight: bold;
           border-radius: 0.7vw;
           line-height: 1vw; }
+        .main .items .wrapper .item .photo .deleted {
+          color: white;
+          background: red;
+          position: absolute;
+          right: 5%;
+          top: 5%;
+          padding: 0.5vw 1.2vw;
+          text-align: center;
+          font-size: 1vw;
+          border-radius: 0.8vw;
+          line-height: 1.2vw; }
       .main .items .wrapper .item .title {
         max-width: 100%;
         margin: 1vw 0 0 1vw;
@@ -250,8 +269,8 @@ a, a:hover {
     .footer .social a {
       width: 25%; }
     .footer .social div {
-      width: 80%;
-      padding-bottom: 80%;
+      width: 70%;
+      padding-bottom: 70%;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center; }

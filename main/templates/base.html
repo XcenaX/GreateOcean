@@ -73,13 +73,20 @@
                             {%endif%}
                         </div>
                     </a>      
-                    <button type="button" class="info" data-bs-toggle="modal" data-bs-target="#infoModal"></button>
+                    <!-- <button type="button" class="info" data-bs-toggle="modal" data-bs-target="#infoModal"></button> -->
                     <!-- onclick="SwitchClass('liveToast', 'hide'); SwitchClass('liveToast', 'show')" -->
                     <a href="{%url 'main:item_add'%}" class="btn btn-primary download">
                         Добавить
                     </a>
-                    
-                    
+                    {%if not current_user%}
+                        <a href="{%url 'main:login'%}" class="btn btn-primary download">
+                            Войти
+                        </a>
+                    {%else%}
+                        <form action="{%url 'main:logout'%}" method="post" class="exit">{%csrf_token%}
+                            <input type="submit" value="Выход">
+                        </form>                        
+                    {%endif%}
                 </div>
                       
             </nav>

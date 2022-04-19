@@ -114,12 +114,22 @@ a, a:hover{
             border: none !important;
             outline: none !important;
         }
-        >.download{
+        >.download, >.exit{
             font-size: 1vw;
             padding: 2% 4%;
             color: white;
-            border-radius: 1vw;
+            border-radius: 0.8vw;
             line-height: 1.5vw;
+        }
+        >.exit{
+            background-color: red;
+            margin: 0 !important;
+            input{
+                background: inherit;
+                border: none;
+                outline: none;
+                color: white;
+            }
         }
     }
     .download, .header .download:hover{    
@@ -137,7 +147,7 @@ a, a:hover{
             
             // background-color: #0077b6;
             // border: 1px solid #03045e;
-            color: white;
+            color: white !important;
             font-weight: bold;
             border-radius: 12px;
             font-size: 1vw;
@@ -239,6 +249,19 @@ a, a:hover{
                         border-radius: 0.7vw;
                         line-height: 1vw;
                     }
+
+                    .deleted{
+                        color: white;
+                        background: red;
+                        position: absolute;
+                        right: 5%;
+                        top: 5%;
+                        padding: 0.5vw 1.2vw;
+                        text-align: center;
+                        font-size: 1vw;
+                        border-radius: 0.8vw;
+                        line-height: 1.2vw;
+                    }
                 }
     
                 .title{
@@ -328,8 +351,8 @@ a, a:hover{
         }
 
         div{
-            width: 80%;
-            padding-bottom: 80%;
+            width: 70%;
+            padding-bottom: 70%;
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;

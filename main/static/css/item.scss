@@ -156,7 +156,17 @@
                     color: white;
                     font-size: 1.5vw;
                     line-height: 2.8vw;
-                    border-radius: 1vw 0 0 1vw;                    
+                    border-radius: 1vw 0 0 1vw; 
+                    margin: 0 !important; 
+                    input{
+                        background: inherit;
+                        border: none;
+                        outline: none;
+                        height: 100%;
+                        color: white;
+                        width: 100%;
+                        border-radius: 1vw 0 0 1vw; 
+                    }                  
                 }
                 .delete{
                     width: 50%;
@@ -178,6 +188,14 @@
                         color: white;
                         width: 100%;
                         border-radius: 0 1vw 1vw 0;
+                    }
+                }
+                .delete.full{
+                    width: 100%;
+                    border-radius: 1vw;
+
+                    input{
+                        border-radius: 1vw;
                     }
                 }
             }

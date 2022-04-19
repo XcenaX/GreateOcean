@@ -14,6 +14,9 @@
                                         <div class="discount">-{{item.discount}}%</div>
                                         <div class="name">Скидка</div>
                                     {%endif%}
+                                    {%if item.deleted%}
+                                        <div class="deleted">Удалено</div>
+                                    {%endif%}
                                 </div>
                                 {%if item.discount > 0%}
                                     <div class="title-block">
