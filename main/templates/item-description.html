@@ -17,11 +17,13 @@
                 <div class="attribute-block">
                     <div class="title">Описание</div>
                     
+                    <div class="text">{{item.description}}</div>
+
                     <div class="item">
                         <div class="name">
-                            <span>Вид</span>
+                            <span>Имя</span>
                         </div>
-                        <div class="value">{{item.type}}</div>
+                        <div class="value">{{item.name}}</div>
                     </div>
                     
                     <div class="item">
@@ -38,12 +40,7 @@
                         <div class="value">{{item.weight}}кг</div>
                     </div>
                     
-                    <div class="item">
-                        <div class="name">
-                            <span>Цвет</span>
-                        </div>
-                        <div class="value">{{item.color}}</div>
-                    </div>
+                   
                     
                 </div>
                 <div class="attribute-block">
@@ -95,6 +92,47 @@
                     </div>                                                   
                 {%endif%}
             </div>            
+        </div>
+        <div class="comments-block" id="comments_block">
+            <div class="title">Комментарии</div>
+            {%if not current_user%} 
+                <div class="sign-in">
+                    <a href="{%url 'main:login'%}">Войдите</a>
+                    <span>чтобы оставлять коментарии</span>
+                </div>
+            {%endif%}
+            {%if item.comments.all|length > 0%}
+                <div class="comments">
+                    {%for comment in item.comments.all%}
+                        <div class="comment">
+                            <div class="photo"></div>
+                            <div class="content-block {%if current_user.role == 'admin'%}delete-comment{%endif%}">
+                                <div class="title-block">                                    
+                                    <div class="user">{{comment.user.login}}</div>
+                                    <div class="created-at">{{comment.created_at|date:'Y-m-d H:i'}}</div>
+                                </div>
+                                <div class="text-block">
+                                    {{comment.text|linebreaks}}
+                                </div>
+                            </div>
+                            {%if current_user.role == "admin"%}
+                                <form action="{% url 'main:delete_comment' comment.id%}" class="delete-form" method="post">{%csrf_token%}
+                                    <button type="submit" class="delete" title="Удалить коментарий"></button>    
+                                    <input type="hidden" name="next" value="{{ request.path }}">                                
+                                </form>                                
+                            {%endif%}
+                        </div>
+                    {%endfor%}
+                </div>
+            {%else%}
+                <div class="no-comments">Пока что нет комментариев!</div>
+            {%endif%}
+            {%if current_user%}
+                <form method="post" action="{%url 'main:send_comment' item.id%}" class="leave-comment-block">{%csrf_token%}
+                    <input name="text" type="text" class="text">
+                    <input type="submit" class="send">
+                </form>
+            {%endif%}
         </div>
     {%endif%}
     

@@ -18,6 +18,10 @@
       background-color: white;
       padding: 7%;
       max-width: 100%; }
+      .item-block .info-block .attribute-block .text {
+        margin-bottom: 1vw;
+        font-size: 0.8vw;
+        text-align: justify; }
       .item-block .info-block .attribute-block .title {
         font-size: 23px;
         font-weight: 500;
@@ -114,11 +118,11 @@
         text-align: center; }
         .item-block .info-block .attribute-block .buttons .edit {
           width: 50%;
-          height: 3vw;
+          height: 2.5vw;
           background-color: green;
           color: white;
-          font-size: 1.5vw;
-          line-height: 2.8vw;
+          font-size: 1vw;
+          line-height: 2.5vw;
           border-radius: 1vw 0 0 1vw;
           margin: 0 !important; }
           .item-block .info-block .attribute-block .buttons .edit input {
@@ -131,11 +135,11 @@
             border-radius: 1vw 0 0 1vw; }
         .item-block .info-block .attribute-block .buttons .delete {
           width: 50%;
-          height: 3vw;
+          height: 2.5vw;
           background-color: red;
           color: white;
-          font-size: 1.5vw;
-          line-height: 2vw;
+          font-size: 1vw;
+          line-height: 2.5vw;
           border: none;
           outline: none;
           margin: 0 !important;
@@ -174,5 +178,111 @@
       color: red;
       display: inline-block;
       margin-right: 10px; }
+
+.comments-block {
+  width: 100%;
+  margin-top: 5vw;
+  margin-bottom: 5vw; }
+  .comments-block .title {
+    font-size: 2vw;
+    font-weight: bold;
+    line-height: 2vw; }
+  .comments-block .sign-in {
+    font-size: 1vw;
+    font-weight: normal;
+    margin-top: 1vw; }
+  .comments-block .comments {
+    margin-top: 2vw; }
+    .comments-block .comments .comment {
+      width: 100%;
+      padding: 1vw;
+      background: white;
+      border: 0.05vw solid black;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: row;
+      margin-top: 1vw; }
+      .comments-block .comments .comment .photo {
+        width: 5%;
+        padding-bottom: 5%;
+        height: 0;
+        background-image: url("../images/user.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat; }
+      .comments-block .comments .comment .content-block {
+        width: 93%; }
+        .comments-block .comments .comment .content-block .title-block {
+          display: flex;
+          justify-content: flex-start;
+          align-items: baseline; }
+          .comments-block .comments .comment .content-block .title-block .user {
+            font-weight: bold;
+            font-size: 1.7vw; }
+          .comments-block .comments .comment .content-block .title-block .created-at {
+            font-size: 1vw;
+            color: grey;
+            margin-left: 1vw; }
+        .comments-block .comments .comment .content-block .text-block {
+          font-size: 1.3vw;
+          line-height: 1.5vw;
+          text-align: justify;
+          margin-top: 0.5vw; }
+      .comments-block .comments .comment .content-block.delete-comment {
+        width: 90%; }
+      .comments-block .comments .comment .delete-form {
+        width: 2%;
+        position: relative; }
+        .comments-block .comments .comment .delete-form .delete {
+          width: 100%;
+          height: 0;
+          padding-bottom: 100%;
+          background-image: url(../images/trash.png);
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          outline: none;
+          border: none;
+          background-color: inherit; }
+  .comments-block .no-comments {
+    padding: 5vw;
+    width: 100%;
+    text-align: center;
+    margin-top: 1vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    border: 0.05vw solid black;
+    background-color: white; }
+
+.leave-comment-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1vw; }
+  .leave-comment-block .text {
+    width: 80%;
+    padding: 0.7vw;
+    font-size: 1.5vw;
+    background: white;
+    border-top: 0.05vw solid black;
+    border-left: 0.05vw solid black;
+    border-bottom: 0.05vw solid black;
+    border-right: none; }
+  .leave-comment-block .send {
+    width: 20%;
+    font-size: 1.5vw;
+    text-align: center;
+    padding-top: 0.7vw;
+    padding-bottom: 0.7vw;
+    outline: none;
+    border-top: 0.05vw solid black;
+    border-right: 0.05vw solid black;
+    border-bottom: 0.05vw solid black;
+    border-left: none;
+    background-color: #4242dd;
+    color: white; }
 
 /*# sourceMappingURL=item.css.map */

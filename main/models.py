@@ -6,6 +6,8 @@ class Comment(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE, related_name="comment_user")
     text = models.TextField()
     created_at = models.DateTimeField(default=datetime.now())
+    def __str__(self):
+        return self.user.login + " " + str(self.created_at)
 
 
 class Fish(models.Model):

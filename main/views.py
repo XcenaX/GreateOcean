@@ -1,3 +1,4 @@
+from msilib.schema import Font
 from django.urls import reverse
 from shutil import ExecError
 from django.shortcuts import redirect, render
@@ -65,11 +66,10 @@ class IndexView(View):
     template_name = "index.html"
     def get(self, request, *args, **kwargs):        
         current_user = get_current_user(request)
-        data = None     
-        if current_user.role == "admin":
-            data = Fish.objects.all()        
-        else:
-            data = Fish.objects.filter(deleted=False)        
+        data = Fish.objects.filter(deleted=False)    
+        if current_user:
+            if current_user.role == "admin":
+                data = Fish.objects.all()                        
         cart = Cart(request)
         
         
@@ -272,10 +272,44 @@ class AddItem(View):
         })
         
 
+class SendComment(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if not current_user:
+            return redirect(reverse("main:index"))
+        fish = None
+        try:
+            fish = Fish.objects.get(id=id)
+        except:
+            return redirect(reverse("main:index"))
+
+        text = post_parameter(request, "text")
+        comment = Comment.objects.create(text=text, user=current_user)
+        fish.comments.add(comment)
+        fish.save()
+
+        return redirect(reverse("main:item_description", args={id}) + "#comments_block")
 
 
-
-
+class DeleteComment(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if not current_user:
+            return redirect(reverse("main:index"))
+        if current_user.role != "admin":
+            return redirect(reverse("main:index"))
+        comment = None
+        previous = post_parameter(request, "next")
+        try:
+            comment = Comment.objects.get(id=id)
+        except:
+            return redirect(reverse("main:index"))        
+        comment.delete()
+        return redirect(previous + "#comments_block")
 
 
 # Когда в админке удаляем или обновляем фото рыбы нужно удалить ненужное фото из Яндекс бакета
