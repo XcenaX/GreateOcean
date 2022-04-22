@@ -216,7 +216,7 @@ a, a:hover {
       .main .items .wrapper .item .title-block {
         display: flex;
         justify-content: space-between;
-        width: 30%;
+        width: 35%;
         align-items: center;
         margin: 1vw; }
         .main .items .wrapper .item .title-block .title.red {

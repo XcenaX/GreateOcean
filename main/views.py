@@ -12,7 +12,10 @@ from matplotlib.pyplot import get
 from .modules.functions import *
 from main.models import Fish
 from cart.cart import Cart
+from rest_framework.authtoken.models import Token
 from django.contrib.auth.hashers import make_password, check_password
+
+
 
 class LoginView(View):
     template_name = "login.html"
@@ -50,7 +53,7 @@ class RegisterView(View):
             pass
 
         hash_password = make_password(password)
-        user = User.objects.create(login=login, password=hash_password)
+        user = User.objects.create(login=login, password=hash_password, username=login)
         user.save()
         return redirect(reverse("main:login")) # ПОТОМ НУЖНО ИЗМЕНИТЬ ПЕРЕАДЕСАЦИЮ
         
@@ -327,6 +330,11 @@ def delete_fish_image_onsave(sender, instance, using, **kwargs):
     new_file = instance.image
     if not old_file == new_file:
         old_file.delete(save=False)
+
+@receiver(post_save, sender=User)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 # @receiver(pre_delete, sender=MyImage)
 # def myimage_ondelete(sender, instance, using, **kwargs):

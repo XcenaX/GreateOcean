@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'api.apps.ApiConfig',
     'main.apps.MainConfig',
     'cart',
     'django.contrib.admin',
@@ -42,8 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'storages',
-    
+    'rest_framework',
+    "django_filters",
+    'rest_framework.authtoken',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',        
+    ]
+}
+
+AUTH_USER_MODEL = 'main.User'
 
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',

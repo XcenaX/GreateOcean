@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
 from greate_ocean.yandex_s3_storage import ClientDocsStorage
+from django.contrib.auth.models import AbstractUser
 
 class Comment(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE, related_name="comment_user")
@@ -25,11 +26,11 @@ class Fish(models.Model):
 
     @property
     def discount_price(self):
-        return int(self.price * (self.discount/100))
+        return int(self.price - (self.price * (self.discount/100)))
 
 
-class User(models.Model):
-    login = models.TextField(default="")
+class User(AbstractUser):
+    login = models.TextField(default="")    
     password = models.TextField(default="")
     fishes = models.ManyToManyField(Fish, null=True, blank=True)
     role = models.TextField(default="user")
