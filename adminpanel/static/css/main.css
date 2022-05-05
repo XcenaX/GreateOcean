@@ -13,6 +13,12 @@
 *::-webkit-scrollbar-thumb:hover {
   background: #555; }
 
+.empty {
+  font-size: 2vw;
+  text-align: center;
+  margin-top: 9vw;
+  line-height: 3vw; }
+
 form.add {
   display: flex;
   justify-content: center;
@@ -84,7 +90,7 @@ a, a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 25%; }
+    width: 32%; }
     .header .right-side > .info, .header .right-side .info:focus {
       width: 2vw;
       height: 2vw;
@@ -108,7 +114,8 @@ a, a:hover {
         background: inherit;
         border: none;
         outline: none;
-        color: white; }
+        color: white;
+        padding: 0; }
   .header .download, .header .header .download:hover {
     text-decoration: none;
     border: none;

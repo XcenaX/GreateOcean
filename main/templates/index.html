@@ -3,8 +3,8 @@
 {% load sass_tags %}
 
 {%block main%}
-    <div class="title">Рыбы</div>
-          
+    <div class="title">Лента</div>
+        {%if data|length > 0%}  
         <div class="row row-cols-4 items" style="max-width: 100%;margin: 0 !important;">
             {%for item in data%}      
                         <div class="wrapper card col" onclick="openModal('myModal{{forloop.counter}}')">
@@ -68,9 +68,9 @@
                         </div>
             {%endfor%}
         </div>        
-        {%if add_block%}
-            <div class="item"></div>
-        {%endif%}        
+        {%else%}
+        <div class="empty">Ваша лента пуста!<br> Добавьте друзей чтобы видеть их публикации</div>
+        {%endif%}
     <!-- <div class="items">
         {%for item in data%}
             <a class="item" href="{%url 'main:item_description' item.id%}">

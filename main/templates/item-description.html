@@ -89,7 +89,15 @@
                             </form>
                             
                         </div>
-                    </div>                                                   
+                    </div>         
+                {%elif current_user.role == 'admin'%}     
+                    <div class="attribute-block">
+                        <div class="buttons">
+                            <form class="delete full" action="{%url 'main:item_delete' item.id%}" method="post">{%csrf_token%}
+                                <input type="submit"  value="Удалить">
+                            </form>                        
+                        </div>
+                    </div>                              
                 {%endif%}
             </div>            
         </div>
@@ -110,6 +118,9 @@
                                 <div class="title-block">                                    
                                     <div class="user">{{comment.user.login}}</div>
                                     <div class="created-at">{{comment.created_at|date:'Y-m-d H:i'}}</div>
+                                    {%if comment.user in current_user.friends.all%}
+                                        <div class="created-at">Друг</div>
+                                    {%endif%}
                                 </div>
                                 <div class="text-block">
                                     {{comment.text|linebreaks}}

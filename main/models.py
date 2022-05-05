@@ -35,5 +35,11 @@ class User(AbstractUser):
     fishes = models.ManyToManyField(Fish, null=True, blank=True)
     role = models.TextField(default="user")
     friends = models.ManyToManyField("User", null=True, blank=True, related_name="user_friends")
+    requests = models.ManyToManyField("FriendRequest", null=True, blank=True, related_name="user_requests")
     def __str__(self):
         return self.login
+
+
+class FriendRequest(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="request_owner")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="request_user")

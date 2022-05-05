@@ -18,6 +18,13 @@
     background: #555;
 }
 
+.empty {
+    font-size: 2vw;
+    text-align: center;
+    margin-top: 9vw;
+    line-height: 3vw;
+}
+
 form.add{
     display: flex;
     justify-content: center;
@@ -102,7 +109,7 @@ a, a:hover{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 25%;
+        width: 32%;
         >.info, .info:focus{
             width: 2vw;
             height: 2vw;
@@ -129,6 +136,7 @@ a, a:hover{
                 border: none;
                 outline: none;
                 color: white;
+                padding: 0;
             }
         }
     }

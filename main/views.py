@@ -69,7 +69,18 @@ class IndexView(View):
     template_name = "index.html"
     def get(self, request, *args, **kwargs):        
         current_user = get_current_user(request)
-        data = Fish.objects.filter(deleted=False)    
+        data = []
+        if current_user:
+            if current_user.role == "admim":
+                data = Fish.objects.all()
+            else:
+                for friend in current_user.friends.all():
+                    for item in friend.fishes.all():
+                        if not item.deleted:
+                            data.append(item)
+        else:
+            data = Fish.objects.filter(deleted=False)
+
         if current_user:
             if current_user.role == "admin":
                 data = Fish.objects.all()                        
@@ -120,6 +131,105 @@ class ItemView(View):
         })
     def post(self, request, id):
         return JsonResponse({"error": "POST method not allowed!"})
+
+class FriendsView(View):
+    template_name = "users.html"
+    def get(self, request):                
+        cart = Cart(request)                     
+        current_user = get_current_user(request)  
+        if not current_user:
+            return redirect(reverse("main:index"))      
+        users = User.objects.exclude(id=current_user.id)            
+        income_requests  = FriendRequest.objects.filter(user=current_user)
+        return render(request, self.template_name, {
+            "users": users,            
+            "income_requests": income_requests,
+            "cart": cart,                
+            "current_user": current_user,        
+        })
+    def post(self, request, id):
+        return JsonResponse({"error": "POST method not allowed!"})
+
+class SendFriendRequest(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if not current_user:
+            return redirect(reverse("main:index"))        
+        user = None
+        try:
+            user = User.objects.get(id=id)
+        except:
+            return redirect(reverse("main:index"))
+        
+        req = FriendRequest.objects.create(owner=current_user, user=user)
+        req.save()
+        previous = post_parameter(request, "next")
+        return redirect(previous)
+
+class DeclineFriend(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if not current_user:
+            return redirect(reverse("main:index"))        
+        req = None
+        try:
+            req = FriendRequest.objects.get(id=id)
+        except:
+            return redirect(reverse("main:index"))
+        
+        req.delete()
+        
+        previous = post_parameter(request, "next")
+        return redirect(previous)
+
+class AcceptFriend(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if not current_user:
+            return redirect(reverse("main:index"))        
+        req = None
+        try:
+            req = FriendRequest.objects.get(id=id)
+        except:
+            return redirect(reverse("main:index"))
+        
+        current_user.friends.add(req.owner)
+        req.owner.friends.add(current_user)
+
+        req.owner.save()
+        current_user.save()
+
+        req.delete()        
+        previous = post_parameter(request, "next")
+        return redirect(previous)
+
+class DeleteFriend(View):
+    def get(self, request):
+        return JsonResponse({"error": "Method GET not allowed!"})
+    def post(self, request, id):
+        current_user = get_current_user(request)
+        if not current_user:
+            return redirect(reverse("main:index"))        
+        user = None
+        try:
+            user = User.objects.get(id=id)
+        except:
+            return redirect(reverse("main:index"))
+        
+        current_user.friends.remove(user)
+        user.friends.remove(current_user)
+
+        user.save()
+        current_user.save()
+
+        previous = post_parameter(request, "next")
+        return redirect(previous)
 
 class DeleteItem(View):
     def get(self, request):
@@ -269,6 +379,7 @@ class AddItem(View):
             })
         fish = Fish.objects.create(name=name, description=description, price=price, discount=discount, weight=weight, height=height, image=image)
         fish.save()
+        current_user.fishes.add(fish)
         return render(request, self.template_name, {
             "cart": cart,           
             "success": "Рыба успешно добавлена!"

@@ -312,8 +312,9 @@
             .delete-form{
                 width: 2%;
                 position: relative;
+                margin: 0;
 
-                .delete{
+                .delete, .add, .accept{
                     width: 100%;
                     height: 0;
                     padding-bottom: 100%;
@@ -325,6 +326,15 @@
                     outline: none;
                     border: none;
                     background-color: inherit;
+                }
+                .add{
+                    background-image: url(../images/white_plus.png);
+                    background-color: rgb(17, 171, 17);
+                    background-size: 50%;
+                    border-radius: 50%;
+                }
+                .accept{
+                    background-image: url(../images/accept.png);
                 }
             }
         }

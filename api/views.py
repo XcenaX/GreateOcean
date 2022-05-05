@@ -133,35 +133,3 @@ class DownloadFile(APIView):
         response['Content-Disposition'] = "attachment; filename=%s" % filename
         return response
 
-
-class AddFriend(APIView):
-    permission_classes = (IsAuthenticated,)  
-
-    def get(self, request):
-        return Response({"error": request.method + " method not allowed!"})
-
-    def post(self, request):
-        current_user_id = int(request.POST["current_user"])
-        code = request.POST["code"]
-        current_user = None
-        try:
-            current_user = User.objects.get(id=current_user_id)
-        except Exception as e:
-            return Response({"error": "User with this id nit found!"})
-        friend = None
-        try:
-            friend = User.objects.get(ref_code=code)        
-        except Exception as e:
-            return Response({"error": "User with this REF CODE nit found!"})
-        
-        if len(current_user.friends.filter(ref_code=code)) > 0:
-            return Response({"error": "Этот человек уже есть в списке друзей"})
-
-        current_user.friends.add(friend)
-        friend.friends.add(current_user)
-        
-        current_user.save()
-        friend.save()
-        
-        return Response({"success": True}) 
-

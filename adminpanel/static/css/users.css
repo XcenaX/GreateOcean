@@ -1,0 +1,26 @@
+.comments {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important; }
+
+.comment {
+  align-items: center !important;
+  width: 49% !important; }
+  .comment .user {
+    line-height: 2vw; }
+  .comment .delete-form {
+    width: 5% !important; }
+  .comment .content-block {
+    width: 80% !important; }
+  .comment .photo {
+    width: 10% !important;
+    padding-bottom: 10% !important; }
+
+.comments-block {
+  margin-top: 0;
+  margin-bottom: 2vw; }
+
+.main > .title {
+  padding: 2vw 0 0 0; }
+
+/*# sourceMappingURL=users.css.map */

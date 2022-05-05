@@ -85,8 +85,12 @@
                     {%else%}
                         <form action="{%url 'main:logout'%}" method="post" class="exit">{%csrf_token%}
                             <input type="submit" value="Выход">
-                        </form>                        
+                        </form>          
+                        <a href="{%url 'main:users'%}" class="btn btn-primary download">
+                            Пользователи
+                        </a>              
                     {%endif%}
+                    
                 </div>
                       
             </nav>

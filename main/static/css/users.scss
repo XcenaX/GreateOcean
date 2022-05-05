@@ -1,0 +1,34 @@
+
+.comments{
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+}
+.comment{
+    align-items: center !important;
+    width: 49% !important;
+    .user{
+        line-height: 2vw;
+    }
+    .delete-form{
+        width: 5% !important;
+    }
+    .content-block{
+        width: 80% !important;
+    }
+    .photo{
+        width: 10% !important;
+        padding-bottom: 10% !important;
+    }
+}
+
+.comments-block{
+    margin-top: 0;
+    margin-bottom: 2vw;
+}
+
+.main{
+    >.title{
+        padding: 2vw 0 0 0;
+    }
+}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{%load static%}
+{% load sass_tags %}
+{% load main_extras %}
+
+{%block styles%}
+    <link rel="stylesheet" href="{% sass_src 'css/item.scss'%}">
+    <link rel="stylesheet" href="{% sass_src 'css/users.scss'%}">
+{%endblock%}
+
+{%block main%}
+    {%if income_requests|length > 0%}
+        <div class="title">Заявки в друзья</div>          
+        <div class="comments-block">
+            <div class="comments">
+                {%for item in income_requests%}      
+                <div class="comment">
+                    <div class="photo"></div>
+                    <div class="content-block delete-comment">
+                        <div class="title-block">                                    
+                            <div class="user">{{item.owner.login}}</div>
+                            <div class="created-at">{{comment.created_at|date:'Y-m-d H:i'}}</div>
+                        </div>
+                        <div class="text-block">
+                            Добавь меня в друзья!
+                        </div>
+                    </div>
+                    
+                    <form action="{% url 'main:accept_friend' item.id%}" class="delete-form" method="post">{%csrf_token%}
+                        <button type="submit" class="accept" title="Принять"></button>    
+                        <input type="hidden" name="next" value="{{ request.path }}">                                
+                    </form>  
+                    <form action="{% url 'main:decline_friend' item.id%}" class="delete-form" method="post">{%csrf_token%}
+                        <button type="submit" class="delete" title="Отклонить"></button>    
+                        <input type="hidden" name="next" value="{{ request.path }}">                                
+                    </form>                                
+                    
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    {%endif%}
+    
+
+    <div class="title">Пользователи</div>          
+    <div class="comments-block">
+        <div class="comments">
+            {%for item in users%}      
+            <div class="comment">
+                <div class="photo"></div>
+                <div class="content-block delete-comment">
+                    <div class="title-block">                                    
+                        <div class="user">{{item.login}}</div>                    
+                        {%if item in current_user.friends.all%}
+                            <div class="created-at">Друг</div>
+                        {%endif%}
+                    </div>
+                    
+                    <div class="text-block">
+                        Количество публикаций: {{item.fishes.all|length}}
+                    </div>
+                </div>
+                
+                {%if item in current_user.friends.all%}
+                    <form action="{% url 'main:delete_friend' item.id%}" class="delete-form" method="post">{%csrf_token%}
+                        <button type="submit" class="delete" title="Удалить из друзей"></button>    
+                        <input type="hidden" name="next" value="{{ request.path }}">                                
+                    </form>                                
+                {%elif current_user|has_friend_request:item%}
+                    <div style="width: 5%;"></div>
+                {%else%}
+                    <form action="{% url 'main:send_friend_request' item.id%}" class="delete-form" method="post">{%csrf_token%}
+                        <button type="submit" class="add" title="Добавить в друзья"></button>    
+                        <input type="hidden" name="next" value="{{ request.path }}">                                              
+                    </form> 
+                {%endif%}
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    
+              
+    
+{%endblock%}

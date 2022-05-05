@@ -17,8 +17,7 @@ router.register(r'comments', CommentViewSet)
 from rest_framework.authtoken import views as api_views
 
 urlpatterns = [
-    url(r'^', include(router.urls)),    
-    path("add_friend/", views.AddFriend.as_view(), name="add_friend"),
+    url(r'^', include(router.urls)),        
     path('api-token-auth/', api_views.obtain_auth_token)
 ]
 
